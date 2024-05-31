@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="CSS/bootstrap.min.css" />
+    <title>CRUD</title>
+  </head>
+  <body style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(./imgs/wallpaperflare.com_wallpaper\ \(3\).jpg);">
+    <div class="container text-center mb-5">
+      <h1 class="mt-5 mb-5 text-white">Storage Management System</h1>
+
+      <!-- Button trigger modal -->
+      <button
+        type="button"
+        onclick="setAdd()"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop"
+      >
+        Click Here To Add a New Product
+      </button>
+
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="staticBackdrop"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                Add New Product
+              </h1>
+              <button
+                type="button"
+                class="btn-close "
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body text-start">
+              <div id="formAlert" class="alert alert-danger text-center mx-auto d-none">Form Invalid</div>
+              <label for="productName">Product Name</label>
+              <input
+                oninput="validateInputs(this)"
+                type="text"
+                id="productName"
+                class="form-control mt-2"
+              />
+              <div class="alert alert-danger mt-2 d-none">
+                Product Name MUST start with a capital letter
+              </div>
+              <label for="productPrice">Product Price</label>
+              <input
+              oninput="validateInputs(this)"
+                type="number"
+                id="productPrice"
+                class="form-control mt-2"
+              />
+              <div class="alert alert-danger mt-2 d-none">
+                Price range from (1000) to (99999)
+              </div>
+              <label for="productCategory">Product Category</label>
+              <input
+              oninput="validateInputs(this)"
+                type="text"
+                id="productCategory"
+                class="form-control mt-2"
+                list="Category"
+              />
+              <div class="alert alert-danger mt-2 d-none">
+                Please select (Mobile-Tv-Laptop)
+              </div>
+
+              <datalist id="Category">
+                <option value="Mobile"></option>
+                <option value="TV"></option>
+                <option value="Laptop"></option>
+              </datalist>
+              <label for="productDescription">Product Description</label>
+              <textarea oninput="validateInputs(this)" class="form-control mt-2" id="productDescription"></textarea>
+              <div class="alert alert-danger mt-2 d-none">
+                Please enter a Description of (4-300) characters
+              </div>
+              <label for="productImage">Product Image</label>
+              <input
+                type="file"
+                accept="Image/*"
+                id="productImage"
+                class="form-control mt-2"
+              />
+            </div>
+            <div class="modal-footer">
+              <button
+              onclick="resetFunction()"
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                id="addBtn"
+                class="btn btn-outline-primary"
+                onclick="addProduct()"
+              >
+                Add Product
+              </button>
+              <button
+                id="updateBtn"
+                type="button"
+                class="btn btn-outline-warning d-none"
+                data-bs-dismiss="modal"
+                onclick="updateProduct()"
+              >
+                Update Product
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <input
+        type="text"
+        id="search"
+        class="w-75 m-auto form-control"
+        placeholder="Search By Name"
+        oninput="searchProduct()"
+      />
+      <div class="row" id="row"></div>
+    </div>
+
+    <script src="JS/bootstrap.bundle.min.js"></script>
+    <script src="JS/script.js"></script>
+  </body>
+</html>
